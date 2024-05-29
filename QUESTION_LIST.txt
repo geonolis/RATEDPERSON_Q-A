@@ -6,7 +6,7 @@ QUESTION_LIST
  CODE 1002
  DECSR “Ποια έκφραση είναι μεγαλύτερη από 100;”
  ANSWERS “105,90+11,110-11,50+51”
- ...
+ ... ?RIGHT ANSWER?
  }
  QUESTION
  {
