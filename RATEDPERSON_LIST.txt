@@ -1,0 +1,15 @@
+RATEDPERSON_LIST
+{
+ RATEDPERSON
+ {
+ CODE 1001
+ SURNAME “Κώστας”
+ FIRSTNAME “Παπαδόπουλος”
+ }
+ RATEDPERSON
+ {
+ CODE 1002
+ SURNAME “Μαρία”
+ FIRSTNAME “Αντωνίου”
+ }
+}

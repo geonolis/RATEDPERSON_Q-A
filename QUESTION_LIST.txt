@@ -1,0 +1,26 @@
+QUESTION_LIST
+{
+ QUESTION
+ {
+ TYPE MC
+ CODE 1002
+ DECSR “Ποια έκφραση είναι μεγαλύτερη από 100;”
+ ANSWERS “105,90+11,110-11,50+51”
+ ...
+ }
+ QUESTION
+ {
+ TYPE WORD
+ CODE 2002
+ DECSR “Πόσο κάνει 37+37;”
+ WORD “54”
+ ...
+ }
+ QUESTION
+ {
+ TYPE FILL
+ CODE 3001
+ DECSR “Το άθροισμα των αριθμών ? και ? είναι ?.”
+ ...
+ }
+}
