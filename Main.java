@@ -10,7 +10,7 @@ public class Main {
         QuestionManager questions=new QuestionManager();
         EvaluatedManager participants=new EvaluatedManager();
         AnswerManager answers=new AnswerManager();
-
+        //GIT TEST
         // add candidates
         participants.addEvaluated(new Evaluated(1, "papamanoli", "ioanna"));
         participants.addEvaluated(new Evaluated(2, "papa", "giorgos"));
