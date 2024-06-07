@@ -4,7 +4,7 @@ RATEDPERSON_LIST
  {
  CODE 1001
  SURNAME “Κώστας”
- FIRSTNAME “Παπαδόπουλος”
+ FIRSTNAME "Papadopoulos"
  }
  RATEDPERSON
  {
