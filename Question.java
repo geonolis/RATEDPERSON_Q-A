@@ -1,4 +1,5 @@
 import java.util.List;
+import java.io.BufferedReader;
 import java.util.Arrays;
 
 public abstract class Question {
@@ -20,6 +21,7 @@ public abstract class Question {
     public String toString() {
         return 	this.description + "\n";
     }
+        abstract public boolean parse(BufferedReader br);    
 
     // Abstract method to be overridden by subclasses
     //public abstract QuestionType getQuestionType();    
@@ -31,6 +33,9 @@ class MultipleChoiceQuestion extends Question {
 
     public MultipleChoiceQuestion(int code, String description) {
         super(code, description);
+    }
+    public MultipleChoiceQuestion() {
+        super(0,"");
     }
 
     public void setChoices(String[] choices){
@@ -60,6 +65,10 @@ class WordAnswerQuestion extends Question {
         super(code, description);
         this.correctAnswer = correctAnswer;
     }
+    public WordAnswerQuestion() {
+        super(0, "");
+        this.correctAnswer = "";
+    }
     public String getCorrectAnswer() {
         return correctAnswer;
     }
@@ -74,6 +83,9 @@ class FillInTheBlanksQuestion extends Question {
         super(code, description); // Call the constructor of the superclass (Question)
         this.words = words;
         this.correctOrder = correctOrder;
+    }
+    public FillInTheBlanksQuestion() {
+        super(0, ""); // Call the constructor of the superclass (Question)
     }
     public String[] getCorrectOrder() {
         return this.correctOrder;

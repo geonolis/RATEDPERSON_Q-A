@@ -27,6 +27,11 @@ public class QuestionManager {
         return questionMap.get(id);
     }// get question
 
+    public void addQuestion(Question question) {
+        questionMap.put(question.getCode(), question);
+        System.out.println("Question added successfully.");
+    }// add fill blanks
+
 
     public boolean QuestionExists(int code) {
         return questionMap.containsKey(code);
