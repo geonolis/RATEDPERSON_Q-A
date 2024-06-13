@@ -40,10 +40,13 @@ public class QuestionManager {
     public void displayAllQuestions() {
         if (!questionMap.isEmpty()) {
             for (Question question : questionMap.values()) {
+                System.out.println(question.toString());
+                /* 
                 System.out.println("Code: " + question.getCode());
                 System.out.println("Description: " + question.getDescription());
-                //System.out.println("Type: " + question.getQuestionType());
+                // System.out.println("Type: " + question.get());
                 System.out.println("-----------------------------");
+                */
             }
         } else {
             System.out.println("No questions found.");

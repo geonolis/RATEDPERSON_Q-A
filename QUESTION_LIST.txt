@@ -4,23 +4,23 @@ QUESTION_LIST
  {
  TYPE MC
  CODE 1002
- DECSR “Ποια έκφραση είναι μεγαλύτερη από 100;”
+ DECSR “Which is bigger than 100?”
  ANSWERS “105,90+11,110-11,50+51”
- ...
+ CORRECT_ANSWERS "1+2"
  }
  QUESTION
  {
  TYPE WORD
  CODE 2002
- DECSR “Πόσο κάνει 37+37;”
+ DECSR “How much is 37+37;”
  WORD “54”
- ...
  }
  QUESTION
  {
  TYPE FILL
  CODE 3001
- DECSR “Το άθροισμα των αριθμών ? και ? είναι ?.”
- ...
+ DECSR “The sum of ? plus ? is ?”
+ ANSWERS "10,5,5"
+ CORRECT_ANSWER "5,5,10"
  }
 }
