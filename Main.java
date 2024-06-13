@@ -1,7 +1,73 @@
 import java.util.*;
 import java.util.stream.Collectors;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.FileReader;
+
 
 public class Main {
+
+    //λίστα πόρων που θα ενημερωθεί
+    static QuestionManager questions=new QuestionManager();
+    static EvaluatedManager participants=new EvaluatedManager();
+    static AnswerManager answers=new AnswerManager();
+
+    
+    public static void parseQuestionList(String aFileName) {
+       try {
+           FileReader fw = new FileReader(aFileName);           
+           BufferedReader buff=new BufferedReader(fw);
+           //System.out.println("File opened");
+           StringTokenizer lineTokens;
+           String token;
+           String line;
+           Question q = null;
+           boolean eof = false;
+           boolean ok;
+           while (!eof) {
+               line = buff.readLine();               
+               if (line == null)
+                   eof = true;
+               else {
+                  //System.out.println(line);
+                  if (line.trim().equals("QUESTION")) {
+                     line = buff.readLine();  
+                     if (line.trim().equals("{")) {
+                       buff.mark(2048);
+                       while ( !(line.trim().equals("}")) && (!eof) ) {
+                          line = buff.readLine();
+                          //System.out.println(line);
+                          lineTokens = new StringTokenizer(line);
+                          token = lineTokens.nextToken();  
+                          if (token.toUpperCase().equals("TYPE")) {
+                              token = lineTokens.nextToken(); 
+                              if (token.equals("MC")) 
+                                 q = new MultipleChoiceQuestion();
+                              else if (token.equals("WORD")) 
+                                 q = new WordAnswerQuestion();
+                              else if (token.equals("FILL")) 
+                                 q = new FillInTheBlanksQuestion();          
+                              //System.out.println("New resource");                              
+                              ok= q.parse(buff);
+                              if (ok) 
+                                    questions.addQuestion(q);                            
+                              break;                               
+                          }
+                       }    
+                     }
+                  }
+                  //System.out.println(token);
+               }    
+           }           
+           
+           buff.close();
+       }
+       catch (IOException ex) {
+            System.err.println("Error reading file");
+       }       
+    }
+  
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -10,13 +76,13 @@ public class Main {
         QuestionManager questions=new QuestionManager();
         EvaluatedManager participants=new EvaluatedManager();
         AnswerManager answers=new AnswerManager();
-        //GIT TEST
+
         // add candidates
         participants.addEvaluated(new Evaluated(1, "papamanoli", "ioanna"));
         participants.addEvaluated(new Evaluated(2, "papa", "giorgos"));
         participants.addEvaluated(new Evaluated(3, "savoulidi", "despoina"));
         participants.addEvaluated(new Evaluated(4, "palaiologou", "margarita"));
-
+        /*
         // add multiple choice
         String[] choices = {"1) x=1, y=8","2) x=1, y=9", "3) x=0, y=3","4) x=0, y=0]"};
         ArrayList<Integer> correct = new  ArrayList<Integer>();
@@ -62,6 +128,8 @@ public class Main {
         String[] words3 = {"1000","13","134"};
         String[] orderwords3 = {"13","134","1000"};
         questions.addFillInTheBlanksQuestion(new FillInTheBlanksQuestion(3001, "Place the words in ascending order.", words3, orderwords3));
+
+        */
 
         System.out.println("Welcome to...");
         System.out.println("\r\n" + //
