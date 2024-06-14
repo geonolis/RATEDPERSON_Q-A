@@ -50,6 +50,9 @@ class MultipleChoiceQuestion extends Question {
         this.correctAnswers = correctAnswers;
     }
 
+    public String[] getAnswers() {
+        return this.choices;
+    }
     public List<Integer> getCorrectAnswers() {
         return this.correctAnswers;
     }
@@ -192,6 +195,9 @@ class FillInTheBlanksQuestion extends Question {
     }
     public String[] getCorrectOrder() {
         return this.correctOrder;
+    }
+    public String[] getWords() {
+        return this.words;
     }
 
     public boolean parse(BufferedReader buff){

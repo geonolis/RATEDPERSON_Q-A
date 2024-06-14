@@ -158,5 +158,5 @@ public class QuestionManager {
 
     }// percent by candidate
     
-
+   
 }

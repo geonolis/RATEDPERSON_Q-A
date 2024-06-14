@@ -1,9 +1,11 @@
 import java.util.*;
 import java.util.stream.Collectors;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.FileReader;
+import java.io.FileWriter;
 
 
 public class Main {
@@ -360,4 +362,60 @@ public class Main {
             System.out.println("Question not found.");
         }
     }
+
+    void CreateFile (String aFileName) {
+		
+		System.out.println(" >>>>>>> Write data from ARRAYLIST to FILE...");
+		
+		FileWriter writer = null;
+
+		try	{
+            if (aFileName=="QUESTION_LIST.txt"){
+                writer = new FileWriter(new File("aFileName"));
+                for (Question question : questions.questionMap.values())
+
+                    if (question instanceof MultipleChoiceQuestion) {
+                        writer.write ("QUESTION"+"\n"+"{"+"\n"+"\t"+"TYPE "+ "MC"
+                                    + "\n"+"\t"+"CODE "+ question.getCode()
+                                    + "\n"+"\t"+"DESCR "	+ question.getDescription()
+                                    + "\n"+"\t"+"ANSWERS "	+ ((MultipleChoiceQuestion)question).getAnswers()
+                                    + "\n"+"\t"+"CORRECT_ANSWERS " + ((MultipleChoiceQuestion)question).getCorrectAnswers()
+                                    + "\n"+"}"+"\n");
+                    }// mc
+                    else if (question instanceof FillInTheBlanksQuestion) {
+                        writer.write ("QUESTION"+"\n"+"{"+"\n"+"\t"+"TYPE "+ "FILL"
+                                    + "\n"+"\t"+"CODE "+ question.getCode()
+                                    + "\n"+"\t"+"DESCR "	+ question.getDescription()
+                                    + "\n"+"\t"+"ANSWERS "	+ ((FillInTheBlanksQuestion)question).getWords()
+                                    + "\n"+"\t"+"CORRECT_ANSWERS " + ((FillInTheBlanksQuestion)question).getCorrectOrder()
+                                    + "\n"+"}"+"\n");
+                    }//fill
+                    else if (question instanceof WordAnswerQuestion) {
+                        writer.write ("QUESTION"+"\n"+"{"+"\n"+"\t"+"TYPE "+ "FILL"
+                                    + "\n"+"\t"+"CODE "+ question.getCode()
+                                    + "\n"+"\t"+"DESCR "	+ question.getDescription()
+                                    + "\n"+"\t"+"WORD "	+ ((WordAnswerQuestion)question).getCorrectAnswer()
+                                    + "\n"+"}"+"\n");
+                    }//fill
+            }//QUESTION LIST
+            else if (aFileName=="ANSWER_LIST.txt"){
+
+            }// ANSWER LIST
+            else if (aFileName=="RATEDPERSON_LIST.txt"){
+                for 
+                writer.write ("RATEDPERSON"+"\n"+"{"+"\n"+"\t"+"TYPE "+ "FILL"
+                                    + "\n"+"\t"+"CODE "+ question.getCode()
+                                    + "\n"+"\t"+"DESCR "	+ question.getDescription()
+                                    + "\n"+"\t"+"WORD "	+ ((WordAnswerQuestion)question).getCorrectAnswer()
+                                    + "\n"+"}"+"\n");
+
+            }
+
+				writer.close();
+			}//try
+			
+			catch (IOException e) {
+				System.err.println("Error writing file.");
+			}
+	}
 } //class
