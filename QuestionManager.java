@@ -6,6 +6,37 @@ import java.util.Map;
 public class QuestionManager {
     private Map<Integer, Question> questionMap = new HashMap<Integer, Question>();
 
+    public String GetAllQuestions(){
+        String string = "";
+        for (Question question : questionMap.values()) {
+
+                    if (question instanceof MultipleChoiceQuestion) {
+                        string += "QUESTION"+"\n"+"{"+"\n"+"\t"+"TYPE "+ "MC"
+                                    + "\n"+"\t"+"CODE "+ question.getCode()
+                                    + "\n"+"\t"+"DESCR "	+ question.getDescription()
+                                    + "\n"+"\t"+"ANSWERS "	+ ((MultipleChoiceQuestion)question).getAnswers()
+                                    + "\n"+"\t"+"CORRECT_ANSWERS " + ((MultipleChoiceQuestion)question).getCorrectAnswers()
+                                    + "\n"+"}"+"\n";
+                    }// mc
+                    else if (question instanceof FillInTheBlanksQuestion) {
+                        string += "QUESTION"+"\n"+"{"+"\n"+"\t"+"TYPE "+ "FILL"
+                                    + "\n"+"\t"+"CODE "+ question.getCode()
+                                    + "\n"+"\t"+"DESCR "	+ question.getDescription()
+                                    + "\n"+"\t"+"ANSWERS "	+ ((FillInTheBlanksQuestion)question).getWords()
+                                    + "\n"+"\t"+"CORRECT_ANSWERS " + ((FillInTheBlanksQuestion)question).getCorrectOrder()
+                                    + "\n"+"}"+"\n";
+                    }//fill
+                    else if (question instanceof WordAnswerQuestion) {
+                        string += "QUESTION"+"\n"+"{"+"\n"+"\t"+"TYPE "+ "FILL"
+                                    + "\n"+"\t"+"CODE "+ question.getCode()
+                                    + "\n"+"\t"+"DESCR "	+ question.getDescription()
+                                    + "\n"+"\t"+"WORD "	+ ((WordAnswerQuestion)question).getCorrectAnswer()
+                                    + "\n"+"}"+"\n";
+                    }//fill
+        }
+        return string;
+    }
+    
     public void addMultipleChoiceQuestion(MultipleChoiceQuestion question) {
    //    question.setChoices(choices);
     //   question.setCorrectAnswers(correctAnswers);

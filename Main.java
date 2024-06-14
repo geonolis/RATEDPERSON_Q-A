@@ -370,7 +370,9 @@ public class Main {
 
 		try	{
             if (aFileName=="QUESTION_LIST.txt"){
+                
                 writer = new FileWriter(new File("aFileName"));
+                /* 
                 for (Question question : questions.questionMap.values())
 
                     if (question instanceof MultipleChoiceQuestion) {
@@ -395,13 +397,15 @@ public class Main {
                                     + "\n"+"\t"+"DESCR "	+ question.getDescription()
                                     + "\n"+"\t"+"WORD "	+ ((WordAnswerQuestion)question).getCorrectAnswer()
                                     + "\n"+"}"+"\n");
-                    }//fill
-            }//QUESTION LIST
+                    }//fill*/
+                writer.write(questions.GetAllQuestions());
+
+            }//QUESTION LIST 
             else if (aFileName=="ANSWER_LIST.txt"){
 
             }// ANSWER LIST
             else if (aFileName=="RATEDPERSON_LIST.txt"){
-                for 
+                for (Evaluated evaluated: participants)
                 writer.write ("RATEDPERSON"+"\n"+"{"+"\n"+"\t"+"TYPE "+ "FILL"
                                     + "\n"+"\t"+"CODE "+ question.getCode()
                                     + "\n"+"\t"+"DESCR "	+ question.getDescription()
