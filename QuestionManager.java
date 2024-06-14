@@ -89,7 +89,7 @@ public class QuestionManager {
         FillInTheBlanksQuestion fibQuestion = (FillInTheBlanksQuestion) question;
         List<String> correctOrder = Arrays.asList(fibQuestion.getCorrectOrder()); // Assuming you have a getter
         
-        // Check if the provided answer matches the correct order
+        // Check if the provided answer matches th
         return fillInTheBlanksAnswer.equals(correctOrder);
     }// check fill
 
