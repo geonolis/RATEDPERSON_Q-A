@@ -27,6 +27,11 @@ public class QuestionManager {
         return questionMap.get(id);
     }// get question
 
+    public void addQuestion(Question question) {
+        questionMap.put(question.getCode(), question);
+        System.out.println("Question added successfully.");
+    }// add fill blanks
+
 
     public boolean QuestionExists(int code) {
         return questionMap.containsKey(code);
@@ -35,10 +40,13 @@ public class QuestionManager {
     public void displayAllQuestions() {
         if (!questionMap.isEmpty()) {
             for (Question question : questionMap.values()) {
+                System.out.println(question.toString());
+                /* 
                 System.out.println("Code: " + question.getCode());
                 System.out.println("Description: " + question.getDescription());
-                //System.out.println("Type: " + question.getQuestionType());
+                // System.out.println("Type: " + question.get());
                 System.out.println("-----------------------------");
+                */
             }
         } else {
             System.out.println("No questions found.");
@@ -81,7 +89,7 @@ public class QuestionManager {
         FillInTheBlanksQuestion fibQuestion = (FillInTheBlanksQuestion) question;
         List<String> correctOrder = Arrays.asList(fibQuestion.getCorrectOrder()); // Assuming you have a getter
         
-        // Check if the provided answer matches the correct order
+        // Check if the provided answer matches th
         return fillInTheBlanksAnswer.equals(correctOrder);
     }// check fill
 
@@ -150,5 +158,5 @@ public class QuestionManager {
 
     }// percent by candidate
     
-
+   
 }
