@@ -1,26 +1,30 @@
-QUESTION_LIST
+QUESTION
 {
- QUESTION
- {
- TYPE MC
- CODE 1002
- DECSR “Which is bigger than 100?”
- ANSWERS “105,90+11,110-11,50+51”
- CORRECT_ANSWERS "1+2"
- }
- QUESTION
- {
- TYPE WORD
- CODE 2002
- DECSR “How much is 37+37;”
- WORD “54”
- }
- QUESTION
- {
- TYPE FILL
- CODE 3001
- DECSR “The sum of ? plus ? is ?”
- ANSWERS "10,5,5"
- CORRECT_ANSWER "5,5,10"
- }
+	TYPE FILL
+	CODE 2002
+	DESCR “How much is 37+37;”
+	WORD “54”
+}
+QUESTION
+{
+	TYPE FILL
+	CODE 4004
+	DESCR D
+	WORD o
+}
+QUESTION
+{
+	TYPE FILL
+	CODE 3001
+	DESCR “The sum of ? plus ? is ?”
+	ANSWERS [Ljava.lang.String;@37f8bb67
+	CORRECT_ANSWERS [Ljava.lang.String;@49c2faae
+}
+QUESTION
+{
+	TYPE MC
+	CODE 1002
+	DESCR “Which is bigger than 100?”
+	ANSWERS [Ljava.lang.String;@728938a9
+	CORRECT_ANSWERS [1, 2]
 }

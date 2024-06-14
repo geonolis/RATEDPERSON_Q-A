@@ -1,9 +1,11 @@
 import java.util.*;
 import java.util.stream.Collectors;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.FileReader;
+import java.io.FileWriter;
 
 
 public class Main {
@@ -221,6 +223,11 @@ public class Main {
                     questions.printPercentageOfCorrectAnswersPerCandidate(answers);
                     break;
                 case 0:
+
+                    CreateFile("ANSWER_LIST.txt");
+                    CreateFile("QUESTION_LIST.txt");
+                    CreateFile("RATEDPERSON_LIST.txt");
+
                     System.out.println("Bye!");
                     break;
                 default:
@@ -359,4 +366,39 @@ public class Main {
             System.out.println("Question not found.");
         }
     }
+
+
+     static void CreateFile (String aFileName) {
+		
+		System.out.println(" >>>>>>> Write data from ARRAYLIST to FILE...");
+		
+		FileWriter writer = null;
+
+		try	{
+            if (aFileName=="QUESTION_LIST.txt"){
+
+                writer = new FileWriter(new File("QUESTION_LIST.txt"));
+                writer.write(questions.GetAllQuestions());
+
+            }//QUESTION LIST 
+            else if (aFileName=="ANSWER_LIST.txt"){
+
+                writer = new FileWriter(new File("ANSWER_LIST.txt"));
+                writer.write(answers.getAllAnswers());
+
+
+            }// ANSWER LIST
+            else if (aFileName=="RATEDPERSON_LIST.txt"){
+                writer = new FileWriter(new File("RATEDPERSON_LIST.txt"));
+                writer.write(participants.getAllParticipants());
+
+            }
+
+				writer.close();
+			}//try
+			
+			catch (IOException e) {
+				System.err.println("Error writing file.");
+			}
+	}
 } //class
