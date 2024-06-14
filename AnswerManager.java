@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+//import javax.sound.sampled.AudioFileFormat.Type;
+
 public class AnswerManager {
 //    public static List<Question> questionList = new ArrayList<>();
     public List<Answer> answerList = new ArrayList<>();
@@ -30,6 +32,36 @@ public class AnswerManager {
         }
     }
 
+    public String getAllAnswers(){
+        String string = "";
+        for (Answer answer : answerList){
+            Question question=answer.getQuestion();
+            if (question instanceof MultipleChoiceQuestion){
+                string += "ANSWER"+"\n"+"{"+"\n"+"\t"+"TYPE "+ "MC"
+                + "\n"+"\t"+"RATEDPERSON_CODE "+ answer.getEvaluatedCode()
+                + "\n"+"\t"+"QUESTION_CODE "	+  answer.getQuestionCode()
+                + "\n"+"\t"+"ASWER "	+ ((MultipleChoiceAnswer)answer).getChosenOptions()
+                + "\n"+"}"+"\n";
+                
+            }
+            else if (question instanceof FillInTheBlanksQuestion){
+                string += "ANSWER"+"\n"+"{"+"\n"+"\t"+"TYPE "+ "FILL"
+                + "\n"+"\t"+"RATEDPERSON_CODE "+ answer.getEvaluatedCode()
+                + "\n"+"\t"+"QUESTION_CODE "	+  answer.getQuestionCode()
+                + "\n"+"\t"+"ASWER "	+ ((FillInTheBlanksAnswer)answer).getFillInTheBlanksAnswer()
+                + "\n"+"}"+"\n";
+            }
+            else if (question instanceof WordAnswerQuestion){
+                string += "ANSWER"+"\n"+"{"+"\n"+"\t"+"TYPE "+ "WORD"
+                + "\n"+"\t"+"RATEDPERSON_CODE "+ answer.getEvaluatedCode()
+                + "\n"+"\t"+"QUESTION_CODE "	+  answer.getQuestionCode()
+                + "\n"+"\t"+"ASWER "	+ ((WordAnswer)answer).getWordAnswer()
+                + "\n"+"}"+"\n";
+            } 
+        }
+        return string;
+          
+    }
 
     public void addAnswer(WordAnswer answer) {
         Question question = answer.getQuestion();

@@ -1,19 +1,5 @@
 RATEDPERSON
 {
-<<<<<<< HEAD
- RATEDPERSON
- {
- CODE 1001
- SURNAME “Κώστας”
- FIRSTNAME “Παπαδόπουλος”
- }
- RATEDPERSON
- {
- CODE 1002
- SURNAME “Maria”
- FIRSTNAME “Antoniou”
- }
-=======
 	TYPE FILL
 	CODE 1
 	SURNAME papamanoli
@@ -39,5 +25,4 @@ RATEDPERSON
 	CODE 4
 	SURNAME palaiologou
 	NAME margarita
->>>>>>> nana
 }

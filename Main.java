@@ -224,6 +224,11 @@ public class Main {
                     questions.printPercentageOfCorrectAnswersPerCandidate(answers);
                     break;
                 case 0:
+
+                    CreateFile("ANSWER_LIST.txt");
+                    CreateFile("QUESTION_LIST.txt");
+                    CreateFile("RATEDPERSON_LIST.txt");
+
                     System.out.println("Bye!");
                     break;
                 default:
@@ -363,7 +368,8 @@ public class Main {
         }
     }
 
-    void CreateFile (String aFileName) {
+
+     static void CreateFile (String aFileName) {
 		
 		System.out.println(" >>>>>>> Write data from ARRAYLIST to FILE...");
 		
@@ -371,43 +377,21 @@ public class Main {
 
 		try	{
             if (aFileName=="QUESTION_LIST.txt"){
-                writer = new FileWriter(new File("aFileName"));
-                for (Question question : questions.questionMap.values())
 
-                    if (question instanceof MultipleChoiceQuestion) {
-                        writer.write ("QUESTION"+"\n"+"{"+"\n"+"\t"+"TYPE "+ "MC"
-                                    + "\n"+"\t"+"CODE "+ question.getCode()
-                                    + "\n"+"\t"+"DESCR "	+ question.getDescription()
-                                    + "\n"+"\t"+"ANSWERS "	+ ((MultipleChoiceQuestion)question).getAnswers()
-                                    + "\n"+"\t"+"CORRECT_ANSWERS " + ((MultipleChoiceQuestion)question).getCorrectAnswers()
-                                    + "\n"+"}"+"\n");
-                    }// mc
-                    else if (question instanceof FillInTheBlanksQuestion) {
-                        writer.write ("QUESTION"+"\n"+"{"+"\n"+"\t"+"TYPE "+ "FILL"
-                                    + "\n"+"\t"+"CODE "+ question.getCode()
-                                    + "\n"+"\t"+"DESCR "	+ question.getDescription()
-                                    + "\n"+"\t"+"ANSWERS "	+ ((FillInTheBlanksQuestion)question).getWords()
-                                    + "\n"+"\t"+"CORRECT_ANSWERS " + ((FillInTheBlanksQuestion)question).getCorrectOrder()
-                                    + "\n"+"}"+"\n");
-                    }//fill
-                    else if (question instanceof WordAnswerQuestion) {
-                        writer.write ("QUESTION"+"\n"+"{"+"\n"+"\t"+"TYPE "+ "FILL"
-                                    + "\n"+"\t"+"CODE "+ question.getCode()
-                                    + "\n"+"\t"+"DESCR "	+ question.getDescription()
-                                    + "\n"+"\t"+"WORD "	+ ((WordAnswerQuestion)question).getCorrectAnswer()
-                                    + "\n"+"}"+"\n");
-                    }//fill
-            }//QUESTION LIST
+                writer = new FileWriter(new File("QUESTION_LIST.txt"));
+                writer.write(questions.GetAllQuestions());
+
+            }//QUESTION LIST 
             else if (aFileName=="ANSWER_LIST.txt"){
+
+                writer = new FileWriter(new File("ANSWER_LIST.txt"));
+                writer.write(answers.getAllAnswers());
+
 
             }// ANSWER LIST
             else if (aFileName=="RATEDPERSON_LIST.txt"){
-                for 
-                writer.write ("RATEDPERSON"+"\n"+"{"+"\n"+"\t"+"TYPE "+ "FILL"
-                                    + "\n"+"\t"+"CODE "+ question.getCode()
-                                    + "\n"+"\t"+"DESCR "	+ question.getDescription()
-                                    + "\n"+"\t"+"WORD "	+ ((WordAnswerQuestion)question).getCorrectAnswer()
-                                    + "\n"+"}"+"\n");
+                writer = new FileWriter(new File("RATEDPERSON_LIST.txt"));
+                writer.write(participants.getAllParticipants());
 
             }
 

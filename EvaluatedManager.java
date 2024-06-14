@@ -17,7 +17,20 @@ public class EvaluatedManager {
         return false;
     }
 
+    
+    
 
+    public String getAllParticipants(){
+        String string = "";
+        for (Evaluated evaluated: evaluatedList){
+                string += "RATEDPERSON"+"\n"+"{"+"\n"+"\t"+"TYPE "+ "FILL"
+                                    + "\n"+"\t"+"CODE "+ evaluated.getCode()
+                                    + "\n"+"\t"+"SURNAME "	+ evaluated.getSurname()
+                                    + "\n"+"\t"+"NAME "	+ evaluated.getName()
+                                    + "\n"+"}"+"\n";
+        }
+        return string;
+    }
     
     public void displayAllEvaluations() {
         if (!evaluatedList.isEmpty()) {
